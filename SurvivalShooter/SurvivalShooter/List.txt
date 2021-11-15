@@ -1,0 +1,6 @@
+Tried:
+-camera shake
+-enemy flash
+-heartbeat
+-bullet time (fast but there!)
+-hit stop
