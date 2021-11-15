@@ -7,7 +7,7 @@ public class EnemyHealth : MonoBehaviour
     public float sinkSpeed = 2.5f;
     public int scoreValue = 10;
     public AudioClip deathClip;
-
+    public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
 
     Animator anim;
     AudioSource enemyAudio;
@@ -48,6 +48,7 @@ public class EnemyHealth : MonoBehaviour
             
         hitParticles.transform.position = hitPoint;
         hitParticles.Play();
+        //anim.GetComponent<Animation.>(Color.red);
 
         if(currentHealth <= 0)
         {
