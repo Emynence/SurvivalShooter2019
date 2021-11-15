@@ -8,7 +8,7 @@ public class EnemyHealth : MonoBehaviour
     public int scoreValue = 10;
     public AudioClip deathClip;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
-
+    public timeManager TM;
     Animator anim;
     AudioSource enemyAudio;
     ParticleSystem hitParticles;
@@ -52,6 +52,7 @@ public class EnemyHealth : MonoBehaviour
 
         if(currentHealth <= 0)
         {
+            
             Death ();
         }
     }
@@ -59,12 +60,13 @@ public class EnemyHealth : MonoBehaviour
 
     void Death ()
     {
+        TM.DoFreeze();
         isDead = true;
 
         capsuleCollider.isTrigger = true;
-
+        
         anim.SetTrigger ("Dead");
-
+        
         enemyAudio.clip = deathClip;
         enemyAudio.Play ();
     }

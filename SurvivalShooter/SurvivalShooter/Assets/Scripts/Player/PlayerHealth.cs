@@ -15,7 +15,7 @@ public class PlayerHealth : MonoBehaviour
     public float flashSpeed = 5f;
     public Color flashColour = new Color(1f, 0f, 0f, 0.1f);
     public CameraShake cameraShake;
-
+    public timeManager TM;
     Animator anim;
     AudioSource playerAudio;
     PlayerMovement playerMovement;
@@ -67,6 +67,7 @@ public class PlayerHealth : MonoBehaviour
 
         if(currentHealth <= 0 && !isDead)
         {
+            
             Death ();
         }
     }
@@ -74,6 +75,7 @@ public class PlayerHealth : MonoBehaviour
 
     void Death ()
     {
+        TM.DoSlowmotion();
         isDead = true;
 
         playerShooting.DisableEffects ();
