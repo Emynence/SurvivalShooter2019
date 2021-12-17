@@ -8,7 +8,7 @@ public class EnemyAttack : MonoBehaviour
 
 
     Animator anim;
-    GameObject player;
+    GameObject player1, player2;
     PlayerHealth playerHealth;
     EnemyHealth enemyHealth;
     bool playerInRange;
@@ -17,8 +17,10 @@ public class EnemyAttack : MonoBehaviour
 
     void Awake ()
     {
-        player = GameObject.FindGameObjectWithTag ("Player");
-        playerHealth = player.GetComponent <PlayerHealth> ();
+        player1 = GameObject.FindGameObjectWithTag ("Player");
+        player2 = GameObject.FindGameObjectWithTag("Player2");
+        playerHealth = player1.GetComponent <PlayerHealth> ();
+        playerHealth = player2.GetComponent<PlayerHealth>();
         enemyHealth = GetComponent<EnemyHealth>();
         anim = GetComponent <Animator> ();
     }
@@ -26,7 +28,11 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerEnter (Collider other)
     {
-        if(other.gameObject == player)
+        if(other.gameObject == player1)
+        {
+            playerInRange = true;
+        }
+        if(other.gameObject == player2)
         {
             playerInRange = true;
         }
@@ -35,7 +41,11 @@ public class EnemyAttack : MonoBehaviour
 
     void OnTriggerExit (Collider other)
     {
-        if(other.gameObject == player)
+        if(other.gameObject == player1)
+        {
+            playerInRange = false;
+        }
+        if (other.gameObject == player2)
         {
             playerInRange = false;
         }

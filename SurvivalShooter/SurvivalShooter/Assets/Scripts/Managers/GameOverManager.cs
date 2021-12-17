@@ -2,7 +2,7 @@
 
 public class GameOverManager : MonoBehaviour
 {
-    public PlayerHealth playerHealth;
+    public PlayerHealth playerHealth1, playerHealth2;
 	public float restartDelay = 5f;
 
 
@@ -18,7 +18,7 @@ public class GameOverManager : MonoBehaviour
 
     void Update()
     {
-        if (playerHealth.currentHealth <= 0)
+        if (playerHealth1.currentHealth <= 0 && playerHealth2.currentHealth<=0)
         {
             anim.SetTrigger("GameOver");
 
